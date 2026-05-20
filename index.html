@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alan Mouawad | Lead Developer & Systems Architect</title>
+    <style>
+        body {
+            font-family: 'Google Sans', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+        h1, h2, h3 {
+            color: #0d1b2a;
+        }
+        .hero {
+            padding: 40px 0;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .tagline {
+            font-size: 1.25rem;
+            color: #4a5568;
+            font-weight: bold;
+        }
+        .section {
+            margin: 40px 0;
+        }
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        
+        /* التنسيق الجديد للصور داخل بطاقة المشروع */
+        .project-image-container {
+            width: 100%;
+            height: 300px; /* ارتفاع مناسب لعرض لوحات التحكم أو واجهات التطبيقات */
+            overflow: hidden;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            border: 1px solid #edf2f7;
+        }
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* لضمان ملء الصورة للمساحة بدون تشويه الأبعاد */
+            object-position: top center; /* يركز على الجزء العلوي من الصورة وهو الأهم في واجهات البرامج */
+            transition: transform 0.3s ease; /* حركة ناعمة عند تمرير الماوس */
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.03); /* تكبير خفيف وتفاعلي عند تمرير الماوس */
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+        }
+        .tech-badge {
+            background: #edf2f7;
+            color: #2d3748;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .highlight {
+            color: #2b6cb0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Alan Mouawad</h1>
+        <p class="tagline">Lead Developer & Systems Architect</p>
+        <p>Highly analytical Software Engineer with over 5 years of professional experience specializing in high-performance desktop applications, robust enterprise web systems, and scalable digital solutions. Expert in driving multi-year software development lifecycles from architecture design to automated deployment pipelines.</p>
+    </header>
+
+    <!-- Core Technical Matrix -->
+    <section class="section">
+        <h2>Core Technical Matrix</h2>
+        <div class="tech-stack">
+            <span class="tech-badge">Rust</span>
+            <span class="tech-badge">Tauri</span>
+            <span class="tech-badge">.NET (ASP.NET Core, MVC, Zero)</span>
+            <span class="tech-badge">C#</span>
+            <span class="tech-badge">React Native & Expo</span>
+            <span class="tech-badge">SQL Server</span>
+            <span class="tech-badge">SQLite</span>
+            <span class="tech-badge">Docker</span>
+        </div>
+    </section>
+
+    <!-- Key Featured Projects -->
+    <section class="section">
+        <h2>Featured Production Repositories</h2>
+
+        <!-- Project 1: PCM -->
+        <div class="project-card">
+            <!-- حاوية الصورة للمشروع الأول -->
+            <div class="project-image-container">
+                <img src="pcm-dashboard.jpg" alt="Project Cycle Management Dashboard" class="project-image">
+            </div>
+            <h3>Project Cycle Management (PCM) System</h3>
+            <p class="highlight">Production Product (Maintained & Evolved Since 2023)</p>
+            <p>An enterprise-grade Project Cycle Management application engineered to streamline complex organizational workflows. Built with a strict Repository Pattern architectural design to separate concerns and maximize testability. Implemented robust data handling layers via Entity Framework Core to manage extensive relational data structures efficiently from inception to final evaluation phases.</p>
+            <div class="tech-stack">
+                <span class="tech-badge">ASP.NET MVC Core 5.0</span>
+                <span class="tech-badge">C#</span>
+                <span class="tech-badge">EF Core</span>
+                <span class="tech-badge">SQL Server</span>
+            </div>
+        </div>
+
+        <!-- Project 2: Study Zone Manager Pro -->
+        <div class="project-card">
+            <!-- حاوية الصورة للمشروع الثاني -->
+            <div class="project-image-container">
+                <img src="study-zone-screenshot.jpg" alt="Study Zone Manager Pro Interface" class="project-image">
+            </div>
+            <h3>Study Zone Manager Pro</h3>
+            <p class="highlight">High-Performance Desktop Management System</p>
+            <p>A specialized desktop solution designed for high-throughput session tracking and automated administrative workflows. Engineered utilizing a cross-platform desktop framework to guarantee lightweight execution, native performance, and a highly responsive, minimalist user interface.</p>
+            <div class="tech-stack">
+                <span class="tech-badge">.NET</span>
+                <span class="tech-badge">C#</span>
+                <span class="tech-badge">SQLite</span>
+                <span class="tech-badge">Desktop Architecture</span>
+            </div>
+        </div>
+
+        <!-- Project 3: Dentix -->
+        <div class="project-card">
+            <!-- حاوية الصورة للمشروع الثالث -->
+            <div class="project-image-container">
+                <img src="dentix-preview.jpg" alt="Dentix Clinic Management System" class="project-image">
+            </div>
+            <h3>Dentix</h3>
+            <p class="highlight">Clinic Management System</p>
+            <p>A modern, full-stack clinic management ecosystem focused on seamless user experiences, real-time data synchronization, and absolute data integrity for administrative and medical workflows.</p>
+            <div class="tech-stack">
+                <span class="tech-badge">Next.js</span>
+                <span class="tech-badge">Supabase</span>
+                <span class="tech-badge">Full-Stack JavaScript</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Approach / Philosophy -->
+    <section class="section">
+        <h2>Architectural Philosophy</h2>
+        <ul>
+            <li><strong>Automated Evolution:</strong> Passionate about setting up bulletproof data migration logic, Docker containers, and automated deployment pipelines to ensure zero-downtime iterations.</li>
+            <li><strong>Data Integrity & Validation:</strong> Specializes in handling complex client-side input variances (such as international localized numeric data formatting) and ensuring strict backend verification layers.</li>
+            <li><strong>Clean Code Mastery:</strong> Committed to deeply documented codebases, comprehensive GitHub history, and clean design patterns that support scaling teams.</li>
+        </ul>
+    </section>
+
+</body>
+</html>
