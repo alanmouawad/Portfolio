@@ -3,15 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alan Matrix | Systems Architect & Lead Developer</title>
+    <title>&#x41;&#x6c;&#x61;&#x6e;&#x20;&#x4d;&#x61;&#x74;&#x72;&#x69;&#x7a;&#x20;&#x7c;&#x20;&#x53;&#x79;&#x73;&#x74;&#x65;&#x6d;&#x73;&#x20;&#x41;&#x72;&#x63;&#x68;&#x69;&#x74;&#x65;&#x63;&#x74;</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <canvas id="neuron-canvas"></canvas>
 
-    <div id="app-secure-container" class="container"></div>
+    <div class="container">
+        <header>
+            <h1 id="prof-title">&#x41;&#x6c;&#x61;&#x6e;&#x20;&#x4d;&#x61;&#x74;&#x72;&#x69;&#x7a;</h1>
+            <div class="subtitle-container">
+                <div class="subtitle">&#x53;&#x59;&#x53;&#x54;&#x45;&#x4d;&#x53;&#x20;&#x41;&#x52;&#x43;&#x48;&#x49;&#x54;&#x45;&#x43;&#x54;&#x20;&#x26;&#x20;&#x4c;&#x45;&#x41;&#x44;&#x20;&#x44;&#x44;&#x45;&#x56;&#x45;&#x4c;&#x4f;&#x50;&#x45;&#x52;</div>
+            </div>
+            <p>&#x53;&#x70;&#x65;&#x63;&#x69;&#x61;&#x6c;&#x69;&#x7a;&#x69;&#x6e;&#x67;&#x20;&#x69;&#x6e;&#x20;&#x63;&#x6f;&#x6d;&#x70;&#x69;&#x6c;&#x69;&#x6e;&#x67;&#x20;&#x68;&#x69;&#x67;&#x68;&#x2d;&#x70;&#x65;&#x72;&#x66;&#x6f;&#x72;&#x6d;&#x61;&#x6e;&#x63;&#x65;&#x20;&#x64;&#x65;&#x73;&#x6b;&#x74;&#x6f;&#x70;&#x20;&#x61;&#x72;&#x63;&#x68;&#x69;&#x74;&#x65;&#x63;&#x74;&#x75;&#x72;&#x65;&#x73;&#x2c;&#x20;&#x6d;&#x75;&#x6c;&#x74;&#x69;&#x2d;&#x74;&#x69;&#x65;&#x72;&#x20;&#x65;&#x6e;&#x74;&#x65;&#x72;&#x70;&#x72;&#x69;&#x73;&#x65;&#x20;&#x77;&#x65;&#x62;&#x20;&#x73;&#x79;&#x73;&#x74;&#x65;&#x6d;&#x73;&#x2c;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x73;&#x65;&#x63;&#x75;&#x72;&#x65;&#x20;&#x69;&#x6e;&#x66;&#x72;&#x61;&#x73;&#x74;&#x72;&#x75;&#x63;&#x74;&#x75;&#x72;&#x65;&#x2e;</p>
+        </header>
 
-    <script src="main.js"></script>
+        <section>
+            <h2>&#x43;&#x6f;&#x72;&#x65;&#x20;&#x53;&#x74;&#x61;&#x63;&#x6b;&#x20;&#x4d;&#x61;&#x74;&#x72;&#x69;&#x72;&#x78;</h2>
+            <div class="tech-grid">
+                <span class="tech-tag" onclick="_navigateToProject('Rust')">Rust</span>
+                <span class="tech-tag" onclick="_navigateToProject('Tauri framework')">Tauri framework</span>
+                <span class="tech-tag" onclick="_navigateToProject('C# / .NET (ASP.NET Core)')">C# / .NET (ASP.NET Core)</span>
+                <span class="tech-tag" onclick="_navigateToProject('Clean Architecture Pattern')">Clean Architecture Pattern</span>
+                <span class="tech-tag" onclick="_navigateToProject('Entity Framework Core')">Entity Framework Core</span>
+                <span class="tech-tag" onclick="_navigateToProject('Next.js / TypeScript')">Next.js / TypeScript</span>
+                <span class="tech-tag" onclick="_navigateToProject('Docker Isolation')">Docker Isolation</span>
+                <span class="tech-tag" onclick="_navigateToProject('SQLite & SQL Server')">SQLite & SQL Server</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>&#x50;&#x72;&#x6f;&#x64;&#x75;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x52;&#x65;&#x70;&#x6f;&#x73;&#x69;&#x74;&#x6f;&#x72;&#x69;&#x65;&#x73;&#x20;&#x41;&#x72;&#x63;&#x68;&#x69;&#x74;&#x65;&#x63;&#x74;&#x75;&#x72;&#x65;</h2>
+            <div class="projects-container" id="secure-render-grid"></div>
+        </section>
+
+        <footer class="secure-footer">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="visitor-counter">
+                        <span class="pulse-dot"></span>
+                        SYS_LOAD_VISITS: <span id="count">000000</span>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            &copy; 2026 Alan Matrix. All rights reserved.
+        </footer>
+    </div>
+
+   <script src="main.js"></script>
 </body>
 </html>
