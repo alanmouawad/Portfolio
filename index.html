@@ -28,11 +28,25 @@
             line-height: 1.7;
             padding: 40px 20px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* حاوية الخلفية العصبية التفاعلية */
+        #neuron-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* لجعلها خلف المحتوى دائماً */
+            pointer-events: none; /* لتفادي حجب أي ضغطات أو تفاعلات مع الأزرار */
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1; /* إبراز المحتوى فوق الخلفية المتحركة */
         }
 
         /* تعريف حركات الدخول الأساسية (Keyframes) */
@@ -172,7 +186,7 @@
         }
 
         .tech-tag {
-            background: var(--bg-secondary);
+            background: rgba(19, 28, 49, 0.7); /* جعلها شبه شفافة لتندمج مع الخلفية المعمارية */
             border: 1px solid var(--border-color);
             padding: 6px 14px;
             border-radius: 6px;
@@ -181,10 +195,11 @@
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            backdrop-filter: blur(4px); /* إضافة تأثير زجاجي ناعم */
         }
 
         .tech-tag:hover {
-            background: rgba(56, 189, 248, 0.06);
+            background: rgba(56, 189, 248, 0.1);
             border-color: var(--accent-blue);
             color: var(--accent-blue);
             transform: translateY(-2px);
@@ -199,7 +214,8 @@
 
         /* تعديلات كرت المشروع ليدعم الفتح والإغلاق الديناميكي */
         .project-card {
-            background: var(--bg-secondary);
+            background: rgba(19, 28, 49, 0.85); /* تقليل التعتيم ليتناسق مع مرور الشبكة خلفه */
+            backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
@@ -423,6 +439,8 @@
 </head>
 <body>
 
+    <canvas id="neuron-canvas"></canvas>
+
     <div class="container">
         <header>
             <h1 id="prof-title">Alan Mouawad</h1>
@@ -552,6 +570,7 @@
             
             _initScrollReveal();
             _initVisitorCounter(); 
+            _initNeuronBackground(); // تشغيل خلفية الشبكة العصبونية التفاعلية
         };
 
         // محرك الفتح والإغلاق التفاعلي للمشاريع
@@ -559,12 +578,10 @@
             const card = document.getElementById(`card-${index}`);
             const isExpanded = card.classList.contains('is-expanded');
             
-            // إغلاق أي كرت مفتوح حالياً لتركيز الرؤية (إختياري، إذا كنت تفضل فتح كروت متعددة معاً احذف السطور الثلاث القادمة)
             document.querySelectorAll('.project-card').forEach(c => c.classList.remove('is-expanded'));
             
             if (!isExpanded) {
                 card.classList.add('is-expanded');
-                // تأمين إعادة حساب مسافات التمرير للسلايدر فور الفتح
                 setTimeout(() => {
                     card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 150);
@@ -606,7 +623,6 @@
             }
         };
 
-        // تحديث محرك الـ Routing ليدعم فتح كرت المشروع وإبرازه بالوميض بشكل تلقائي عند الضغط على الـ Matrix tags بالكامل
         const _navigateToProject = (techName) => {
             const projectIndex = _systemRegistry.findIndex(project => 
                 project.stack.some(tech => tech.toLowerCase() === techName.toLowerCase())
@@ -615,7 +631,6 @@
             if (projectIndex !== -1) {
                 const targetCard = document.getElementById(`card-${projectIndex}`);
                 if (targetCard) {
-                    // فتح الكارد إذا كان مغلقاً تلقائياً لعرض التقنية بداخلها
                     if (!targetCard.classList.contains('is-expanded')) {
                         _toggleProjectAccordion(projectIndex);
                     }
@@ -649,6 +664,114 @@
             }, observerOptions);
 
             cards.forEach(card => cardObserver.observe(card));
+        };
+
+        // المحرك الفيزيائي المستقل لبناء خلايا العصبونات ومحاورها الذكية
+        const _initNeuronBackground = () => {
+            const canvas = document.getElementById('neuron-canvas');
+            const ctx = canvas.getContext('2d');
+
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            const neurons = [];
+            // كثافة متزنة لعدد العصبونات بناءً على دقة شاشة العرض
+            const neuronCount = Math.min(60, Math.floor((width * height) / 25000)); 
+            const maxConnectionDistance = 150;
+
+            // كائن لتتبع حركة الفأرة لإحداث جاذبية متجاوبة لطيفة
+            const mouse = { x: null, y: null, radius: 180 };
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+
+            window.addEventListener('mouseout', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            class Neuron {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    // سرعة انتقال بطيئة وثابتة لمحاكاة النبض الهادئ العشوائي
+                    this.vx = (Math.random() - 0.5) * 0.35;
+                    this.vy = (Math.random() - 0.5) * 0.35;
+                    this.radius = Math.random() * 2 + 1.5;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    // الارتداد الهادئ عن جدران الشاشة
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                    // تأثير تفاعلي خفيف لجاذبية الفأرة دون تشتيت
+                    if (mouse.x != null && mouse.y != null) {
+                        const dx = mouse.x - this.x;
+                        const dy = mouse.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < mouse.radius) {
+                            const force = (mouse.radius - distance) / mouse.radius;
+                            this.x -= (dx / distance) * force * 0.4;
+                            this.y -= (dy / distance) * force * 0.4;
+                        }
+                    }
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    // لون النواة مشتق من درجة الـ Accent Blue مع شفافية فائقة النعومة
+                    ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
+                    ctx.fill();
+                }
+            }
+
+            // توليد النواة العصبية الأولية
+            for (let i = 0; i < neuronCount; i++) {
+                neurons.push(new Neuron());
+            }
+
+            // حلقة المحاكاة والأنيميشن المستمر
+            const animate = () => {
+                ctx.clearRect(0, 0, width, height);
+
+                // تحديث ورسم العصبونات وتوصيل المسارات والروابط
+                for (let i = 0; i < neurons.length; i++) {
+                    neurons[i].update();
+                    neurons[i].draw();
+
+                    for (let j = i + 1; j < neurons.length; j++) {
+                        const dx = neurons[i].x - neurons[j].x;
+                        const dy = neurons[i].y - neurons[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < maxConnectionDistance) {
+                            // حساب شفافية الخيط العصبي بناءً على بعده ليتلاشى بنعومة فائقة
+                            const alpha = (1 - (distance / maxConnectionDistance)) * 0.12;
+                            ctx.beginPath();
+                            ctx.moveTo(neurons[i].x, neurons[i].y);
+                            ctx.lineTo(neurons[j].x, neurons[j].y);
+                            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            };
+
+            animate();
         };
 
         document.addEventListener('DOMContentLoaded', _renderEngine);
