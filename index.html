@@ -110,6 +110,7 @@
             border-radius: 12px;
             overflow: hidden;
             transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
         }
 
         .project-card:hover {
@@ -117,13 +118,37 @@
             border-color: var(--accent-blue);
         }
 
-        .image-wrapper {
+        /* نظام التمرير الأفقي الجديد المطور للصور */
+        .slider-wrapper {
+            position: relative;
             width: 100%;
-            height: 320px;
-            overflow: hidden;
+            height: 350px;
             background: #0f172a;
             border-bottom: 1px solid var(--border-color);
-            position: relative;
+        }
+
+        .image-slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            /* إخفاء شريط التمرير الافتراضي للمتصفحات */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .image-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
+        .slider-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: start;
+            overflow: hidden;
         }
 
         .project-img {
@@ -134,9 +159,36 @@
             transition: transform 0.5s ease;
         }
 
-        .project-card:hover .project-img {
-            transform: scale(1.04);
+        /* أزرار التحكم بالتمرير يميناً ويساراً */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(19, 28, 49, 0.85);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+            z-index: 10;
+            user-select: none;
         }
+
+        .slider-btn:hover {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            border-color: var(--accent-blue);
+        }
+
+        .slider-btn.prev { left: 16px; }
+        .slider-btn.next { right: 16px; }
 
         .project-content {
             padding: 28px;
@@ -208,43 +260,70 @@
     </div>
 
     <script>
-        // الكود المعماري للمشاريع محمي ومفصول هنا داخل مصفوفة ديناميكية
-        // هذا الفصل يسهل عملية تشفير وتمويه الكود لاحقاً لمنع سرقة محتوى النصوص وهيكل المشاريع
+        // مصفوفة البيانات المطورة لتستوعب 4 صور لكل مشروع
+        // يمكنك تسمية الصور في جهازك لتطابق الأسماء المكتوبة هنا بالترتيب
         const _systemRegistry = [
             {
                 status: "Production System (Evolving Since 2023)",
                 title: "Project Cycle Management (PCM) System",
                 desc: "An enterprise-level Project Cycle Management application engineered under strict Clean Architecture (Repository Pattern) isolating business logic from infrastructure tiers. Built to handle heavy data flows from project instantiation through complex audit evaluation loops.",
-                img: "pcm-dashboard.jpg",
+                images: [
+                    "pcm-1.jpg",
+                    "pcm-2.jpg",
+                    "pcm-3.jpg",
+                    "pcm-4.jpg"
+                ],
                 stack: ["ASP.NET Core MVC 5.0", "C#", "EF Core", "SQL Server"]
             },
             {
                 status: "High-Performance Desktop Client",
                 title: "Study Zone Manager Pro",
                 desc: "A compiled cross-platform desktop management application engineered for zero-latency session tracking and automated offline administration. Implemented local secure data schemas and structural state management for optimized performance.",
-                img: "study-zone-screenshot.jpg",
+                images: [
+                    "study-1.jpg",
+                    "study-2.jpg",
+                    "study-3.jpg",
+                    "study-4.jpg"
+                ],
                 stack: [".NET", "C#", "SQLite", "Tauri/Rust Compatible Model"]
             },
             {
                 status: "Full-Stack Application Layer",
                 title: "Dentix",
                 desc: "A modern clinic ecosystem designed for optimized patient tracking, zero-loss operational data mapping, and instant client-side rendering with real-time state persistence algorithms.",
-                img: "dentix-preview.jpg",
+                images: [
+                    "dentix-1.jpg",
+                    "dentix-2.jpg",
+                    "dentix-3.jpg",
+                    "dentix-4.jpg"
+                ],
                 stack: ["Next.js", "Supabase", "TypeScript", "Tailwind Engines"]
             }
         ];
 
-        // ميكانيكية حقن الأنظمة داخل الواجهة
+        // محرك الحقن البرمجي وبناء السلايدر ديناميكياً لكل كرت
         const _renderEngine = () => {
             const grid = document.getElementById('secure-render-grid');
             let _htmlBuffer = '';
 
-            _systemRegistry.forEach(project => {
+            _systemRegistry.forEach((project, index) => {
                 let tags = project.stack.map(t => `<span class="tech-tag">${t}</span>`).join('');
+                
+                // بناء الشرائح الأربعة لكل مشروع
+                let slides = project.images.map(img => `
+                    <div class="slider-slide">
+                        <img src="${img}" alt="${project.title}" class="project-img" loading="lazy">
+                    </div>
+                `).join('');
+
                 _htmlBuffer += `
                     <div class="project-card">
-                        <div class="image-wrapper">
-                            <img src="${project.img}" alt="${project.title}" class="project-img" loading="lazy">
+                        <div class="slider-wrapper">
+                            <button class="slider-btn prev" onclick="_slideAction(${index}, -1)">&#10094;</button>
+                            <div class="image-slider" id="slider-${index}">
+                                ${slides}
+                            </div>
+                            <button class="slider-btn next" onclick="_slideAction(${index}, 1)">&#10095;</button>
                         </div>
                         <div class="project-content">
                             <div class="project-status">${project.status}</div>
@@ -258,7 +337,15 @@
             grid.innerHTML = _htmlBuffer;
         };
 
-        // تشغيل المحرك فور تحميل وثيقة الصفحة
+        // دالة التمرير البرمجي عند الضغط على الأسهم (يمين / يسار)
+        const _slideAction = (sliderIndex, direction) => {
+            const slider = document.getElementById(`slider-${sliderIndex}`);
+            const slideWidth = slider.clientWidth;
+            // التحرك بمقدار عرض الكرت إما لليمين أو لليسار
+            slider.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
+        };
+
+        // تفعيل النظام
         document.addEventListener('DOMContentLoaded', _renderEngine);
     </script>
 </body>
