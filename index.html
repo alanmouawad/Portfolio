@@ -775,6 +775,61 @@
         };
 
         document.addEventListener('DOMContentLoaded', _renderEngine);
+        // 1. منع النقر بالزر الأيمن للفأرة (Context Menu)
+document.addEventListener('contextmenu', (event) => event.preventDefault());
+
+// 2. حظر اختصارات لوحة المفاتيح الشهيرة للوصول إلى الكود
+document.addEventListener('keydown', (event) => {
+    // حظر زر F12
+    if (event.key === 'F12' || event.keyCode === 123) {
+        event.preventDefault();
+        return false;
+    }
+
+    // حظر Ctrl+Shift+I (فتح أدوات المطورين) و Ctrl+Shift+J (فتح الكونسول)
+    if (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.keyCode === 73 || event.key === 'J' || event.keyCode === 74)) {
+        event.preventDefault();
+        return false;
+    }
+
+    // حظر Ctrl+Shift+C (أداة فحص العناصر Inspect Element)
+    if (event.ctrlKey && event.shiftKey && (event.key === 'C' || event.keyCode === 67)) {
+        event.preventDefault();
+        return false;
+    }
+
+    // حظر Ctrl+U (عرض سورس الصفحة View Source)
+    if (event.ctrlKey && (event.key === 'u' || event.keyCode === 85)) {
+        event.preventDefault();
+        return false;
+    }
+
+    // حظر Ctrl+S (لحفظ الملفات محلياً)
+    if (event.ctrlKey && (event.key === 's' || event.keyCode === 83)) {
+        event.preventDefault();
+        return false;
+    }
+});
+
+// 3. نظام رادار متقدم: كشف فتح أدوات المطورين وعمل تجميد برميجي (Debugger Loop)
+// بمجرد أن يحاول مستخدم متقدم فتح أدوات المطورين عبر القائمة الجانبية للمتصفح، سيتم توقيف المتصفح تلقائياً
+(function() {
+    const checkDevTools = function() {
+        const startTime = new Date().getTime();
+        // إطلاق دالة الجرد البرمجي
+        debugger; 
+        const endTime = new Date().getTime();
+        
+        // إذا استغرق التنفيذ أكثر من 100 مللي ثانية، فهذا يعني أن المتصفح متوقف عند الـ debugger (الأدوات مفتوحة)
+        if (endTime - startTime > 100) {
+            // إعادة توجيه المستخدم أو تفريغ الصفحة لمنع الرؤية
+            document.body.innerHTML = "<h1 style='color:#38bdf8; text-align:center; margin-top:20%; font-family:sans-serif;'>Security Protocol Activated. Access Denied.</h1>";
+        }
+    };
+    
+    // تشغيل الفحص الأمني بشكل دوري كل ثانية
+    setInterval(checkDevTools, 1000);
+})();
     </script>
 </body>
 </html>
