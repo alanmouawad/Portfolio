@@ -174,7 +174,7 @@
             box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(56, 189, 248, 0.15);
         }
 
-        /* نظام التمرير الأفقي المطور للصور */
+        /* نظام التمرير الأفقي المطور للصور المتجاوبة وديناميكية الحجم */
         .slider-wrapper {
             position: relative;
             width: 100%;
@@ -205,11 +205,15 @@
             height: 100%;
             scroll-snap-align: start;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .project-img {
             width: 100%;
             height: 100%;
+            /* التكيف الديناميكي مع الحفاظ على النسبة الأبعاد لكل صورة وحمايتها من التمدد المشوه */
             object-fit: cover;
             object-position: top center;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -331,7 +335,7 @@
         <section>
             <h2>Production Repositories Architecture</h2>
             <div class="projects-container" id="secure-render-grid">
-                </div>
+            </div>
         </section>
 
         <footer class="secure-footer">
@@ -418,11 +422,27 @@
             _initScrollReveal();
         };
 
-        // دالة التمرير البرمجي الناعم للصور (يمين / يسار)
+        // محرك التمرير اللانهائي والديناميكي (Infinite Loop Carousel Engine)
         const _slideAction = (sliderIndex, direction) => {
             const slider = document.getElementById(`slider-${sliderIndex}`);
             const slideWidth = slider.clientWidth;
-            slider.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
+            
+            // حساب المسافة الحالية الممررة ومقارنتها ديناميكياً مع الأبعاد الكلية للسلايدر
+            const currentScroll = slider.scrollLeft;
+            const maxScroll = slider.scrollWidth - slideWidth;
+
+            // شرط الدوران من النهاية للبداية (Next السهم الأيمن)
+            if (direction === 1 && Math.ceil(currentScroll) >= maxScroll) {
+                slider.scrollTo({ left: 0, behavior: 'smooth' });
+            } 
+            // شرط الدوران من البداية للنهاية (Prev السهم الأيسر)
+            else if (direction === -1 && currentScroll <= 0) {
+                slider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            } 
+            // التمرير الطبيعي بين الصور بناءً على حجم السلايدر المتغير
+            else {
+                slider.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
+            }
         };
 
         // محرك مراقبة التمرير (Intersection Observer) لظهور الكروت بحركة انسيابية متتالية عند النزول لأسفل الصفحة
@@ -438,7 +458,6 @@
             const cardObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry, idx) => {
                     if (entry.isIntersecting) {
-                        // إضافة تأخير زمني بسيط (Stagger Effect) لكل كرت ليظهروا وراء بعضهم بشكل رائع
                         setTimeout(() => {
                             entry.target.classList.add('reveal-active');
                         }, idx * 150);
