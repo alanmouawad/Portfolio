@@ -1,1 +1,164 @@
-const _0x4f12=['\x73\x65\x63\x75\x72\x65\x2d\x72\x65\x6e\x64\x65\x72\x2d\x67\x72\x69\x64','\x63\x64\x69\x63\x6b','\x73\x74\x6f\x70\x50\x72\x6f\x70\x61\x67\x61\x74\x69\x6f\x6e','\x50\x72\x6f\x64\x75\x63\x74\x69\x6f\x6e\x20\x53\x79\x73\x74\x65\x6d\x20\x28\x45\x76\x6f\x6c\x76\x69\x6e\x67\x20\x53\x69\x6e\x63\x65\x20\x32\x30\x32\x33\x29','\x50\x72\x6f\x6a\x65\x63\x74\x20\x43\x79\x63\x6c\x65\x20\x4d\x61\x6e\x61\x67\x65\x6d\x65\x6e\x74\x20\x28\x50\x43\x4d\x29\x20\x53\x79\x73\x74\x65\x6d','\x41\x6e\x20\x65\x6e\x74\x65\x72\x70\x72\x69\x73\x65\x2d\x6c\x65\x76\x65\x6c\x20\x50\x72\x6f\x6a\x65\x63\x74\x20\x43\x79\x63\x6c\x65\x20\x4d\x61\x6e\x61\x67\x65\x6d\x65\x6e\x74\x20\x61\x70\x70\x6c\x69\x63\x61\x74\x69\x6f\x6e\x20\x65\x6e\x67\x69\x6e\x65\x65\x72\x65\x64\x20\x75\x6e\x64\x65\x72\x20\x73\x74\x72\x69\x63\x74\x20\x43\x6c\x65\x61\x6e\x20\x41\x72\x63\x68\x69\x74\x65\x63\x74\x72\x75\x65\x2e','\x48\x69\x67\x68\x2d\x50\x65\x72\x66\x6f\x72\x6d\x61\x6e\x63\x65\x20\x44\x65\x73\x6b\x74\x6f\x70\x20\x43\x6c\x69\x65\x6e\x74','\x53\x74\x75\x64\x79\x20\x5a\x6f\x6e\x65\x20\x4d\x61\x6e\x61\x67\x65\x72\x20\x50\x72\x6f','\x41\x20\x63\x6f\x6d\x70\x69\x6c\x65\x64\x20\x63\x72\x6f\x73\x73\x2d\x70\x6c\x61\x74\x66\x6f\x72\x6d\x20\x64\x65\x73\x6b\x74\x6f\x70\x20\x6d\x61\x6e\x61\x67\x65\x6d\x65\x6e\x74\x20\x61\x70\x70\x6c\x69\x63\x61\x74\x69\x6f\x6e\x20\x65\x6e\x67\x69\x6e\x65\x65\x72\x65\x64\x20\x66\x6f\x72\x20\x7a\x65\x72\x6f\x2d\x6c\x61\x74\x65\x6e\x63\x79\x20\x73\x65\x73\x73\x69\x6f\x6e\x20\x74\x72\x61\x63\x6b\x69\x6e\x67\x2e','\x46\x75\x6c\x6c\x2d\x53\x74\x61\x63\x6b\x20\x41\x70\x70\x6c\x69\x63\x61\x74\x69\x6f\x6e\x20\x4c\x61\x79\x65\x72','\x44\x65\x6e\x74\x69\x78','\x41\x20\x6d\x6f\x64\x65\x72\x6e\x20\x63\x6c\x69\x6e\x69\x63\x20\x65\x63\x6f\x73\x73\x79\x73\x74\x65\x6d\x20\x64\x65\x73\x69\x67\x6e\x65\x64\x20\x66\x6f\x72\x20\x6f\x70\x74\x69\x6d\x69\x7a\x65\x64\x20\x70\x61\x74\x69\x65\x6e\x74\x20\x74\x72\x61\x63\x6b\x69\x6e\x67\x2e','\x69\x6e\x6e\x65\x72\x48\x54\x4d\x4C','\x69\x73\x2d\x65\x78\x70\x61\x6e\x64\x65\x64','\x73\x63\x72\x6f\x6c\x6c\x4a\x6e\x74\x6f\x56\x69\x65\x77','\x5f\x73\x79\x73\x5f\x76\x69\x73\x69\x74\x5f\x63\x61\x63\x68\x65','\x63\x6f\x75\x6e\x74','\x68\x69\x67\x68\x6c\x69\x67\x68\x74\x2d\x74\x61\x72\x67\x65\x74','\x72\x65\x76\x65\x61\x6c\x2d\x61\x63\x74\x69\x76\x65','\x6e\x65\x73\x74\x65\x64\x43\x61\x6e\x76\x61\x73','\x72\x67\x62\x61\x28\x35\x36\x2c\x20\x31\x38\x39\x2c\x20\x32\x34\x38\x2c\x20','\x44\x4f\x4d\x43\x6f\x6e\x74\x65\x6e\x74\x4c\x6f\x61\x64\x65\x64'];const _0x1a4b=function(_0x2d3f,_0x4f12f0){_0x2d3f=_0x2d3f-0x0;let _0x1a4bfa=_0x4f12[_0x2d3f];return _0x1a4bfa;};const _systemRegistry=[{status:_0x1a4b('0x3'),title:_0x1a4b('0x4'),desc:_0x1a4b('0x5'),images:['pcm-1.jpg','pcm-2.jpg','pcm-3.jpg','pcm-4.jpg'],stack:['ASP.NET Core MVC 5.0','C#','EF Core','SQL Server','Clean Architecture Pattern']},{status:_0x1a4b('0x6'),title:_0x1a4b('0x7'),desc:_0x1a4b('0x8'),images:['study-1.jpg','study-2.jpg','study-3.jpg','study-4.jpg'],stack:['.NET','C#','SQLite','Tauri framework','Rust']},{status:_0x1a4b('0x9'),title:_0x1a4b('0xa'),desc:_0x1a4b('0xb'),images:['Clinic1.png','Clinic 2.png','Clinic 3.png','Clinic 4.png'],stack:['Next.js','Supabase','TypeScript','Tailwind Engines']}];const _renderEngine=()=>{const _0x27f2f1=document.getElementById(_0x1a4b('0x0'));if(!_0x27f2f1)return;let _0x41f32a='';_systemRegistry.forEach((_0x367f08,_0x12fa0b)=>{let _0x170b02=_0x367f08.stack.map(_0x2fb080=>`<span class="tech-tag" onclick="event.${_0x1a4b('0x2')}(); _navigateToProject('${_0x2fb080}')">${_0x2fb080}</span>`).join('');let _0x593df8=_0x367f08.images.map(_0x16b049=>`<div class="slider-slide"><img src="${_0x16b049}" alt="${_0x367f08.title}" class="project-img" loading="lazy"></div>`).join('');_0x41f32a+=`<div class="project-card" id="card-${_0x12fa0b}"><div class="project-header-trigger" onclick="_toggleProjectAccordion(${_0x12fa0b})"><div class="project-header-title"><div class="project-status" style="margin-bottom: 2px;">${_0x367f08.status}</div><h3>${_0x367f08.title}</h3></div><div class="accordion-arrow">&#9662;</div></div><div class="project-body-collapse" id="collapse-${_0x12fa0b}"><div class="slider-wrapper"><button class="slider-btn prev" onclick="event.${_0x1a4b('0x2')}(); _slideAction(${_0x12fa0b}, -1)">&#10094;</button><div class="image-slider" id="slider-${_0x12fa0b}">${_0x593df8}</div><button class="slider-btn next" onclick="event.${_0x1a4b('0x2')}(); _slideAction(${_0x12fa0b}, 1)">&#10095;</button></div><div class="project-content"><p>${_0x367f08.desc}</p><div class="tech-grid">${_0x170b02}</div></div></div></div>`;});_0x27f2f1[_0x1a4b('0xc')]=_0x41f32a;_0x11fa1b();_0x4a2b1a();_0x2b3c4d();};const _toggleProjectAccordion=_0x3b12ea=>{const _0x53ff0d=document.getElementById(`card-${_0x3b12ea}`);if(!_0x53ff0d)return;const _0x81fa02=_0x53ff0d.classList.contains(_0x1a4b('0xd'));document.querySelectorAll('.project-card').forEach(_0x22c2a1=>_0x22c2a1.classList.remove(_0x1a4b('0xd')));if(!_0x81fa02){_0x53ff0d.classList.add(_0x1a4b('0xd'));setTimeout(()=>{_0x53ff0d[_0x1a4b('0xe')]({behavior:'smooth',block:'nearest'});},0x96);}};const _0x4a2b1a=()=>{const _0x1224ab=document.getElementById(_0x1a4b('0x10'));if(!_0x1224ab)return;let _0x21bbfa=localStorage.getItem(_0x1a4b('0xf'))||0x400;_0x21bbfa=parseInt(_0x21bbfa)+0x1;localStorage.setItem(_0x1a4b('0xf'),_0x21bbfa);_0x1224ab[_0x1a4b('0xc')]=String(_0x21bbfa).padStart(0x6,'0');};const _slideAction=(_0x3df0a2,_0x1f021b)=>{const _0x2fb3a2=document.getElementById(`slider-${_0x3df0a2}`);if(!_0x2fb3a2)return;const _0x412ab1=_0x2fb3a2.clientWidth;const _0x88f21a=_0x2fb3a2.scrollLeft;const _0xbb2910=_0x2fb3a2.scrollWidth-_0x412ab1;if(_0x1f021b===0x1&&Math.ceil(_0x88f21a)>=_0xbb2910){_0x2fb3a2.scrollTo({left:0x0,behavior:'smooth'});}else if(_0x1f021b===-0x1&&_0x88f21a<=0x0){_0x2fb3a2.scrollTo({left:0xbb2910,behavior:'smooth'});}else{_0x2fb3a2.scrollBy({left:_0x412ab1*_0x1f021b,behavior:'smooth'});}};const _navigateToProject=_0x28bb3e=>{const _0x302fb0=_systemRegistry.findIndex(_0x2ff21a=>_0x2ff21a.stack.some(_0x42fa11=>_0x42fa11.toLowerCase()===_0x28bb3e.toLowerCase()));if(_0x302fb0!==-0x1){const _0x1810b2=document.getElementById(`card-${_0x302fb0}`);if(_0x1810b2){if(!_0x1810b2.classList.contains(_0x1a4b('0xd'))){_toggleProjectAccordion(_0x302fb0);}_0x1810b2[_0x1a4b('0xe')]({behavior:'smooth',block:'center'});_0x1810b2.classList.remove(_0x1a4b('0x11'));void _0x1810b2.offsetWidth;_0x1810b2.classList.add(_0x1a4b('0x11'));}}};const _0x11fa1b=()=>{const _0x58210b=document.querySelectorAll('.project-card');if(_0x58210b.length===0)return;const _0x72ba21={root:null,threshold:0.1,rootMargin:'0px 0px -50px 0px'};const _0x3b2a01=new IntersectionObserver((_0x14f2b0,_0x5cb210)=>{_0x14f2b0.forEach(_0x22f2ba)=>{if(_0x22f2ba.isIntersecting){_0x22f2ba.target.classList.add(_0x1a4b('0x12'));_0x5cb210.unobserve(_0x22f2ba.target);}});},_0x72ba21);_0x58210b.forEach(_0x464a2b=>_0x3b2a01.observe(_0x464a2b));};const _0x2b3c4d=()=>{const _0x51da02=document.getElementById('neuron-canvas');if(!_0x51da02)return;const _0x4c2b9a=_0x51da02.getContext('2d');let _0x5cb412=_0x51da02.width=window.innerWidth;let _0x45ba10=_0x51da02.height=window.innerHeight;const _0x47fa2b=[];const _0x2bb01a=Math.min(0x3c,Math.floor((_0x5cb412*_0x45ba10)/0x61a8));const _0x36762a=0x96;const _0x187a2b={x:null,y:null,radius:0xb4};window.addEventListener('mousemove',_0x39ba2f=>{_0x187a2b.x=_0x39ba2f.clientX;_0x187a2b.y=_0x39ba2f.clientY;});window.addEventListener('mouseout',()=>{_0x187a2b.x=null;_0x187a2b.y=null;});window.addEventListener('resize',()=>{_0x5cb412=_0x51da02.width=window.innerWidth;_0x45ba10=_0x51da02.height=window.innerHeight;});class _0x33ca02{constructor(){this.x=Math.random()*_0x5cb412;this.y=Math.random()*_0x45ba10;this.vx=(Math.random()-0.5)*0.35;this.vy=(Math.random()-0.5)*0.35;this.radius=Math.random()*0x2+1.5;}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0x0||this.x>_0x5cb412)this.vx*=-0x1;if(this.y<0x0||this.y>_0x45ba10)this.vy*=-0x1;if(_0x187a2b.x!=null&&_0x187a2b.y!=null){const _0x5e2b0a=_0x187a2b.x-this.x;const _0x19a2b0=_0x187a2b.y-this.y;const _0x56a2bb=Math.sqrt(_0x5e2b0a*_0x5e2b0a+_0x19a2b0*_0x19a2b0);if(_0x56a2bb<_0x187a2b.radius){const _0x217a2b=(_0x187a2b.radius-_0x56a2bb)/_0x187a2b.radius;this.x-=(_0x5e2b0a/_0x56a2bb)*_0x217a2b*0.4;this.y-=(_0x19a2b0/_0x56a2bb)*_0x217a2b*0.4;}}}draw(){_0x4c2b9a.beginPath();_0x4c2b9a.arc(this.x,this.y,this.radius,0x0,Math.PI*0x2);_0x4c2b9a.fillStyle=_0x1a4b('0x14')+'0.25)';_0x4c2b9a.fill();}}for(let _0x41fa2b=0x0;_0x41fa2b<_0x2bb01a;_0x41fa2b++)_0x47fa2b.push(new _0x33ca02());const _0x5991ab=()=>{_0x4c2b9a.clearRect(0x0,0x0,_0x5cb412,_0x45ba10);for(let _0x21fa22=0x0;_0x21fa22<_0x47fa2b.length;_0x21fa22++){_0x47fa2b[_0x21fa22].update();_0x47fa2b[_0x21fa22].draw();for(let _0x592faa=_0x21fa22+0x1;_0x592faa<_0x47fa2b.length;_0x592faa++){const _0x2d91bb=_0x47fa2b[_0x21fa22].x-_0x47fa2b[_0x592faa].x;const _0x2fb91a=_0x47fa2b[_0x21fa22].y-_0x47fa2b[_0x592faa].y;const _0x221ab0=Math.sqrt(_0x2d91bb*_0x2d91bb+_0x2fb91a*_0x2fb91a);if(_0x221ab0<_0x36762a){const _0x56f91b=(0x1-(_0x221ab0/_0x36762a))*0.12;_0x4c2b9a.beginPath();_0x4c2b9a.moveTo(_0x47fa2b[_0x21fa22].x,_0x47fa2b[_0x21fa22].y);_0x4c2b9a.lineTo(_0x47fa2b[_0x592faa].x,_0x47fa2b[_0x592faa].y);_0x4c2b9a.strokeStyle=_0x1a4b('0x14')+_0x56f91b+')';_0x4c2b9a.lineWidth=0.8;_0x4c2b9a.stroke();}}}requestAnimationFrame(_0x5991ab);};_0x5991ab();};document.addEventListener('contextmenu',_0x3dfa02=>_0x3dfa02.preventDefault());document.addEventListener('keydown',_0x4a2b10=>{if(_0x4a2b10.key==='F12'||_0x4a2b10.keyCode===0x7b){_0x4a2b10.preventDefault();return false;}if(_0x4a2b10.ctrlKey&&_0x4a2b10.shiftKey&&(_0x4a2b10.key==='I'||_0x4a2b10.keyCode===0x49||_0x4a2b10.key==='J'||_0x4a2b10.keyCode===0x4a||_0x4a2b10.key==='C'||_0x4a2b10.keyCode===0x43)){_0x4a2b10.preventDefault();return false;}if(_0x4a2b10.ctrlKey&&(_0x4a2b10.key==='u'||_0x4a2b10.keyCode===0x55||_0x4a2b10.key==='s'||_0x4a2b10.keyCode===0x53)){_0x4a2b10.preventDefault();return false;}});document.addEventListener(_0x1a4b('0x15'),_renderEngine);
+// Secure Data Payload (Base64 Encoded to prevent static analysis)
+const _0xdb = [
+    "UHJvZHVjdGlvbi组织VzdGVtIChFdm9sdmluZyBTaW5jZSAyMDIzKQ==", // status 1
+    "UHJvamVjdCBDeWNsZSBNYW5hZ2VtZW50IChQQ00pIFN5c3RlbQ==",     // title 1
+    "QW4gZW50ZXJwcmlzZS1sZXZlbCBQcm9qZWN0IEN5Y2xlIE1hbmFnZW1lbnQgYXBwbGljYXRpb24gZW5naW5lZXJlZCB1bmRlciBzdHJpY3QgQ2xlYW4gQXJjaGl0ZWN0dXJlLg==", // desc 1
+    "SGlnaC1QZXJmb3JtYW5jZSBEZXNrdG9wIENsaWVudA==",             // status 2
+    "U3R1ZHkgWm9uZSBNYW5hZ2VyIFBybw==",                         // title 2
+    "QSBjb21waWxlZCBjcm9zcy1wbGF0Zm9ybSBkZXNrdG9wIG1hbmFnZW1lbnQgYXBwbGljYXRpb24gZW5naW5lZXJlZCBmb3IgemVyby1sYXRlbmN5IHNlc3Npb24gdHJhY2tpbmcu", // desc 2
+    "RnVsbC1TdGFjayBBcHBsaWNhdGlvbiBMYXllcg==",                 // status 3
+    "RGVudGl4",                                                 // title 3
+    "QSBtb2Rlcm4gY2xpbmljIGVjb3N5c3RlbSBkZXNpZ25lZCBmb3Igb3B0aW1pemVkIHBhdGllbnQgdHJhY2tpbmcu" // desc 3
+];
+
+const _0xfb = (idx) => decodeURIComponent(atob(_0xdb[idx]).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+
+const _systemRegistry = [
+    { status: _0xfb(0), title: _0xfb(1), desc: _0xfb(2), images: ["pcm-1.jpg", "pcm-2.jpg", "pcm-3.jpg", "pcm-4.jpg"], stack: ["ASP.NET Core MVC 5.0", "C#", "EF Core", "SQL Server", "Clean Architecture Pattern"] },
+    { status: _0xfb(3), title: _0xfb(4), desc: _0xfb(5), images: ["study-1.jpg", "study-2.jpg", "study-3.jpg", "study-4.jpg"], stack: [".NET", "C#", "SQLite", "Tauri framework", "Rust"] },
+    { status: _0xfb(6), title: _0xfb(7), desc: _0xfb(8), images: ["Clinic1.png", "Clinic 2.png", "Clinic 3.png", "Clinic 4.png"], stack: ["Next.js", "Supabase", "TypeScript", "Tailwind Engines"] }
+];
+
+const _renderEngine = () => {
+    const grid = document.getElementById('secure-render-grid');
+    if (!grid) return;
+    let html = '';
+
+    _systemRegistry.forEach((p, i) => {
+        let tags = p.stack.map(t => `<span class="tech-tag" onclick="event.stopPropagation(); _navigateToProject('${t}')">${t}</span>`).join('');
+        let slides = p.images.map(img => `<div class="slider-slide"><img src="${img}" alt="${p.title}" class="project-img" loading="lazy"></div>`).join('');
+
+        html += `<div class="project-card" id="card-${i}"><div class="project-header-trigger" onclick="_toggleProjectAccordion(${i})"><div class="project-header-title"><div class="project-status" style="margin-bottom:2px;">${p.status}</div><h3>${p.title}</h3></div><div class="accordion-arrow">&#9662;</div></div><div class="project-body-collapse" id="collapse-${i}"><div class="slider-wrapper"><button class="slider-btn prev" onclick="event.stopPropagation(); _slideAction(${i},-1)">&#10094;</button><div class="image-slider" id="slider-${i}">${slides}</div><button class="slider-btn next" onclick="event.stopPropagation(); _slideAction(${i},1)">&#10095;</button></div><div class="project-content"><p>${p.desc}</p><div class="tech-grid">${tags}</div></div></div></div>`;
+    });
+    grid.innerHTML = html;
+    _initScrollReveal();
+    _initVisitorCounter();
+    _initNeuronBackground();
+};
+
+const _toggleProjectAccordion = (i) => {
+    const card = document.getElementById(`card-${i}`);
+    if (!card) return;
+    const exp = card.classList.contains('is-expanded');
+    document.querySelectorAll('.project-card').forEach(c => c.classList.remove('is-expanded'));
+    if (!exp) {
+        card.classList.add('is-expanded');
+        setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 150);
+    }
+};
+
+const _initVisitorCounter = () => {
+    const el = document.getElementById('count');
+    if (!el) return;
+    let c = localStorage.getItem('_sys_visit_cache') || 1024;
+    c = parseInt(c) + 1;
+    localStorage.setItem('_sys_visit_cache', c);
+    el.innerText = String(c).padStart(6, '0');
+};
+
+const _slideAction = (idx, dir) => {
+    const s = document.getElementById(`slider-${idx}`);
+    if (!s) return;
+    const w = s.clientWidth, cur = s.scrollLeft, max = s.scrollWidth - w;
+    if (dir === 1 && Math.ceil(cur) >= max) { s.scrollTo({ left: 0, behavior: 'smooth' }); }
+    else if (dir === -1 && cur <= 0) { s.scrollTo({ left: max, behavior: 'smooth' }); }
+    else { s.scrollBy({ left: w * dir, behavior: 'smooth' }); }
+};
+
+const _navigateToProject = (tech) => {
+    const idx = _systemRegistry.findIndex(p => p.stack.some(t => t.toLowerCase() === tech.toLowerCase()));
+    if (idx !== -1) {
+        const card = document.getElementById(`card-${idx}`);
+        if (card) {
+            if (!card.classList.contains('is-expanded')) { _toggleProjectAccordion(idx); }
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.classList.remove('highlight-target');
+            void card.offsetWidth;
+            card.classList.add('highlight-target');
+        }
+    }
+};
+
+const _initScrollReveal = () => {
+    const cards = document.querySelectorAll('.project-card');
+    if (cards.length === 0) return;
+    const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { root: null, threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    cards.forEach(c => obs.observe(c));
+};
+
+const _initNeuronBackground = () => {
+    const canvas = document.getElementById('neuron-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = window.innerWidth, h = canvas.height = window.innerHeight;
+    const pts = [];
+    const count = Math.min(60, Math.floor((w * h) / 25000));
+    const maxDist = 150;
+    const mouse = { x: null, y: null, radius: 180 };
+
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+    window.addEventListener('resize', () => { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; });
+
+    class Pt {
+        constructor() {
+            this.x = Math.random() * w; this.y = Math.random() * h;
+            this.vx = (Math.random() - 0.5) * 0.35; this.vy = (Math.random() - 0.5) * 0.35;
+            this.r = Math.random() * 2 + 1.5;
+        }
+        update() {
+            this.x += this.vx; this.y += this.vy;
+            if (this.x < 0 || this.x > w) this.vx *= -1;
+            if (this.y < 0 || this.y > h) this.vy *= -1;
+            if (mouse.x != null && mouse.y != null) {
+                const dx = mouse.x - this.x, dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < mouse.radius) {
+                    const f = (mouse.radius - dist) / mouse.radius;
+                    this.x -= (dx / dist) * f * 0.4; this.y -= (dy / dist) * f * 0.4;
+                }
+            }
+        }
+        draw() {
+            ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.25)'; ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < count; i++) pts.push(new Pt());
+
+    const anim = () => {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < pts.length; i++) {
+            pts[i].update(); pts[i].draw();
+            for (let j = i + 1; j < pts.length; j++) {
+                const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < maxDist) {
+                    const a = (1 - (dist / maxDist)) * 0.12;
+                    ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+                    ctx.strokeStyle = `rgba(56, 189, 248, ${a})`; ctx.lineWidth = 0.8; ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(anim);
+    };
+    anim();
+};
+
+// Security Layer
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+    if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); return false; }
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault(); return false; }
+    if (e.ctrlKey && (e.key === 'u' || e.key === 's')) { e.preventDefault(); return false; }
+});
+
+document.addEventListener('DOMContentLoaded', _renderEngine);
