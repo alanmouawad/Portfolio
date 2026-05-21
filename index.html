@@ -131,9 +131,13 @@
 
         .tech-grid {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; 
             gap: 10px;
             margin-bottom: 48px;
+            overflow-x: auto; 
+            padding-bottom: 8px; 
+            -ms-overflow-style: none; 
+            scrollbar-width: none; 
         }
 
         .tech-tag {
