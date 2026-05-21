@@ -194,9 +194,10 @@
         .projects-container {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 15px; /* تقليل المسافة لتتناسب مع وضع العناوين المدمج */
         }
 
+        /* تعديلات كرت المشروع ليدعم الفتح والإغلاق الديناميكي */
         .project-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -204,7 +205,7 @@
             overflow: hidden;
             position: relative;
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(20px);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
@@ -213,10 +214,79 @@
             transform: translateY(0);
         }
 
-        .project-card:hover {
-            transform: translateY(-6px);
+        /* هيدر الكرت القابل للضغط */
+        .project-header-trigger {
+            padding: 20px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            background: rgba(19, 28, 49, 0.4);
+            transition: background 0.3s ease;
+        }
+
+        .project-header-trigger:hover {
+            background: rgba(19, 28, 49, 0.9);
+        }
+
+        .project-header-title {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .project-header-title h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-header-title h3,
+        .project-card.is-expanded .project-header-title h3 {
+            color: var(--accent-blue);
+        }
+
+        /* سهم مؤشر الحالة الروتاري */
+        .accordion-arrow {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card:hover .accordion-arrow {
             border-color: var(--accent-blue);
-            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+        }
+
+        .project-card.is-expanded .accordion-arrow {
+            transform: rotate(180deg);
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            border-color: var(--accent-blue);
+        }
+
+        /* حاوية التفاصيل المخفية/المظهرة بسلاسة */
+        .project-body-collapse {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card.is-expanded .project-body-collapse {
+            max-height: 1200px; /* مساحة أمان علوية كافية لفتح المحتوى بالكامل */
+        }
+
+        .project-card.is-expanded {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
         .slider-wrapper {
@@ -317,19 +387,8 @@
             color: var(--accent-green);
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 8px;
             letter-spacing: 0.5px;
             display: inline-block;
-        }
-
-        .project-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            transition: color 0.3s ease;
-        }
-
-        .project-card:hover .project-content h3 {
-            color: var(--accent-blue);
         }
 
         .project-content p {
@@ -348,14 +407,15 @@
             opacity: 0;
             animation: fadeInUp 0.8s ease 0.6s forwards;
         }
-            .secure-footer .row {
+
+        .secure-footer .row {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 15px;
-       }
+        }
             
-            .secure-footer .visitor-counter {
+        .secure-footer .visitor-counter {
             display: inline-flex;
             margin: 0 auto;
         }
@@ -394,21 +454,21 @@
 
         <footer class="secure-footer">
             <div class="row">
-                <div class="col-md-4></div>
-                <div class="col-md-4>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
                     <div class="visitor-counter">
                         <span class="pulse-dot"></span>
                         SYS_LOAD_VISITS: <span id="count">Loading...</span>
                     </div>
                 </div>
                 <div class="col-md-4"></div>
-         </div>
+            </div>
             &copy; 2026 Alan Mouawad. Core logic systems secured via compiled architectural patterns. All rights reserved.
         </footer>
     </div>
 
     <script>
-        // مصفوفة البيانات والمشاريع الفردية
+        // مصفوفة البيانات والمشاريع الفردية كالعادة دون تعديل
         const _systemRegistry = [
             {
                 status: "Production System (Evolving Since 2023)",
@@ -448,13 +508,13 @@
             }
         ];
 
-        // محرك حقن البيانات وبناء واجهات السلايدر التفاعلية
+        // محرك حقن البيانات المتطور لدعم معمارية الـ Accordion القابلة للطي
         const _renderEngine = () => {
             const grid = document.getElementById('secure-render-grid');
             let _htmlBuffer = '';
 
             _systemRegistry.forEach((project, index) => {
-                let tags = project.stack.map(t => `<span class="tech-tag" onclick="_navigateToProject('${t}')">${t}</span>`).join('');
+                let tags = project.stack.map(t => `<span class="tech-tag" onclick="event.stopPropagation(); _navigateToProject('${t}')">${t}</span>`).join('');
                 
                 let slides = project.images.map(img => `
                     <div class="slider-slide">
@@ -464,18 +524,26 @@
 
                 _htmlBuffer += `
                     <div class="project-card" id="card-${index}">
-                        <div class="slider-wrapper">
-                            <button class="slider-btn prev" onclick="event.stopPropagation(); _slideAction(${index}, -1)">&#10094;</button>
-                            <div class="image-slider" id="slider-${index}">
-                                ${slides}
+                        <div class="project-header-trigger" onclick="_toggleProjectAccordion(${index})">
+                            <div class="project-header-title">
+                                <div class="project-status" style="margin-bottom: 2px;">${project.status}</div>
+                                <h3>${project.title}</h3>
                             </div>
-                            <button class="slider-btn next" onclick="event.stopPropagation(); _slideAction(${index}, 1)">&#10095;</button>
+                            <div class="accordion-arrow">&#9662;</div>
                         </div>
-                        <div class="project-content">
-                            <div class="project-status">${project.status}</div>
-                            <h3>${project.title}</h3>
-                            <p>${project.desc}</p>
-                            <div class="tech-grid">${tags}</div>
+                        
+                        <div class="project-body-collapse" id="collapse-${index}">
+                            <div class="slider-wrapper">
+                                <button class="slider-btn prev" onclick="event.stopPropagation(); _slideAction(${index}, -1)">&#10094;</button>
+                                <div class="image-slider" id="slider-${index}">
+                                    ${slides}
+                                </div>
+                                <button class="slider-btn next" onclick="event.stopPropagation(); _slideAction(${index}, 1)">&#10095;</button>
+                            </div>
+                            <div class="project-content">
+                                <p>${project.desc}</p>
+                                <div class="tech-grid">${tags}</div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -483,23 +551,37 @@
             grid.innerHTML = _htmlBuffer;
             
             _initScrollReveal();
-            _initVisitorCounter(); // تشغيل عداد الزيارات
+            _initVisitorCounter(); 
+        };
+
+        // محرك الفتح والإغلاق التفاعلي للمشاريع
+        const _toggleProjectAccordion = (index) => {
+            const card = document.getElementById(`card-${index}`);
+            const isExpanded = card.classList.contains('is-expanded');
+            
+            // إغلاق أي كرت مفتوح حالياً لتركيز الرؤية (إختياري، إذا كنت تفضل فتح كروت متعددة معاً احذف السطور الثلاث القادمة)
+            document.querySelectorAll('.project-card').forEach(c => c.classList.remove('is-expanded'));
+            
+            if (!isExpanded) {
+                card.classList.add('is-expanded');
+                // تأمين إعادة حساب مسافات التمرير للسلايدر فور الفتح
+                setTimeout(() => {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 150);
+            }
         };
 
         // محرك جلب عدد الزيارات الفعلي وتحديث الواجهة ديناميكياً
         const _initVisitorCounter = () => {
-            // ملاحظة: يمكنك استبدال 'alan_portfolio_2026' بأي معرف فريد خاص بك
             const namespace = "alan_matrix_portfolio";
             const key = "home_page";
             
             fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
                 .then(res => res.json())
                 .then(data => {
-                    // عرض العداد بصيغة رقمية ممتلئة بالأصفار تتماشى مع الطابع البرمجي (مثال: 000142)
                     document.getElementById('count').innerText = String(data.value).padStart(6, '0');
                 })
                 .catch(err => {
-                    // في حال فشل الاتصال بالـ API أو وجود قيود بالشبكة، يتم التحويل تلقائياً لمحاكاة ذكية محلياً
                     let localCount = localStorage.getItem('_sys_visit_cache') || 1024;
                     localCount = parseInt(localCount) + 1;
                     localStorage.setItem('_sys_visit_cache', localCount);
@@ -524,6 +606,7 @@
             }
         };
 
+        // تحديث محرك الـ Routing ليدعم فتح كرت المشروع وإبرازه بالوميض بشكل تلقائي عند الضغط على الـ Matrix tags بالكامل
         const _navigateToProject = (techName) => {
             const projectIndex = _systemRegistry.findIndex(project => 
                 project.stack.some(tech => tech.toLowerCase() === techName.toLowerCase())
@@ -532,6 +615,11 @@
             if (projectIndex !== -1) {
                 const targetCard = document.getElementById(`card-${projectIndex}`);
                 if (targetCard) {
+                    // فتح الكارد إذا كان مغلقاً تلقائياً لعرض التقنية بداخلها
+                    if (!targetCard.classList.contains('is-expanded')) {
+                        _toggleProjectAccordion(projectIndex);
+                    }
+                    
                     targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     
                     targetCard.classList.remove('highlight-target');
@@ -554,7 +642,7 @@
                     if (entry.isIntersecting) {
                         setTimeout(() => {
                             entry.target.classList.add('reveal-active');
-                        }, idx * 150);
+                        }, idx * 100);
                         observer.unobserve(entry.target);
                     }
                 });
