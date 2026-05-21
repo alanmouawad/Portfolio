@@ -27,6 +27,7 @@
             color: var(--text-main);
             line-height: 1.7;
             padding: 40px 20px;
+            overflow-x: hidden;
         }
 
         .container {
@@ -34,11 +35,35 @@
             margin: 0 auto;
         }
 
-        /* Header / Hero */
+        /* تعريف حركات الدخول الأساسية (Keyframes) */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleWidth {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+
+        /* Header / Hero Animation */
         header {
             padding-bottom: 40px;
             border-bottom: 1px solid var(--border-color);
             margin-bottom: 40px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         header h1 {
@@ -46,6 +71,11 @@
             letter-spacing: -0.5px;
             color: var(--text-main);
             margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        header h1:hover {
+            color: var(--accent-blue);
         }
 
         .subtitle {
@@ -63,7 +93,12 @@
             max-width: 800px;
         }
 
-        /* Matrix Section / Grid */
+        /* Matrix Section / Grid Animation */
+        section {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        }
+
         h2 {
             font-size: 1.6rem;
             margin-bottom: 24px;
@@ -78,6 +113,9 @@
             flex-grow: 1;
             height: 1px;
             background: var(--border-color);
+            display: block;
+            animation: scaleWidth 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+            width: 0;
         }
 
         .tech-grid {
@@ -95,9 +133,18 @@
             font-size: 0.9rem;
             color: var(--text-main);
             font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
         }
 
-        /* Dynamic Projects Secure Container */
+        .tech-tag:hover {
+            background: rgba(56, 189, 248, 0.06);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Dynamic Projects Secure Container & Scroll Animation */
         .projects-container {
             display: grid;
             grid-template-columns: 1fr;
@@ -109,22 +156,32 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease;
             position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* الفئة التي سيتم حقنها عبر جافا سكريبت عند دخول العناصر للشاشة */
+        .project-card.reveal-active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             border-color: var(--accent-blue);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(56, 189, 248, 0.15);
         }
 
-        /* نظام التمرير الأفقي الجديد المطور للصور */
+        /* نظام التمرير الأفقي المطور للصور */
         .slider-wrapper {
             position: relative;
             width: 100%;
             height: 350px;
             background: #0f172a;
             border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
         }
 
         .image-slider {
@@ -134,13 +191,12 @@
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-            /* إخفاء شريط التمرير الافتراضي للمتصفحات */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
         }
 
         .image-slider::-webkit-scrollbar {
-            display: none; /* Chrome, Safari and Opera */
+            display: none; 
         }
 
         .slider-slide {
@@ -156,19 +212,23 @@
             height: 100%;
             object-fit: cover;
             object-position: top center;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* أزرار التحكم بالتمرير يميناً ويساراً */
+        .project-card:hover .project-img {
+            transform: scale(1.03);
+        }
+
+        /* أزرار التحكم بالتمرير يميناً ويساراً مع الـ Animations */
         .slider-btn {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            background: rgba(19, 28, 49, 0.85);
+            transform: translateY(-50%) scale(0.9);
+            background: rgba(10, 15, 29, 0.85);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -176,22 +236,34 @@
             justify-content: center;
             font-weight: bold;
             font-size: 1.2rem;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 10;
             user-select: none;
+            opacity: 0; /* مخفية افتراضياً وتظهر عند الحوم فوق الكرت */
+        }
+
+        .project-card:hover .slider-btn {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
         }
 
         .slider-btn:hover {
             background: var(--accent-blue);
             color: var(--bg-primary);
             border-color: var(--accent-blue);
+            animation: pulseGlow 1s infinite;
         }
 
-        .slider-btn.prev { left: 16px; }
-        .slider-btn.next { right: 16px; }
+        .slider-btn.prev { left: 20px; }
+        .slider-btn.next { right: 20px; }
+        
+        .slider-btn:active {
+            transform: translateY(-50%) scale(0.9);
+        }
 
         .project-content {
             padding: 28px;
+            position: relative;
         }
 
         .project-status {
@@ -201,11 +273,17 @@
             text-transform: uppercase;
             margin-bottom: 8px;
             letter-spacing: 0.5px;
+            display: inline-block;
         }
 
         .project-content h3 {
             font-size: 1.4rem;
             margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-content h3 {
+            color: var(--accent-blue);
         }
 
         .project-content p {
@@ -222,6 +300,8 @@
             text-align: center;
             font-size: 0.85rem;
             color: var(--text-muted);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
         }
     </style>
 </head>
@@ -255,13 +335,12 @@
         </section>
 
         <footer class="secure-footer">
-            &copy; 2026 Alan Mouawad Core logic systems secured via compiled architectural patterns. All rights reserved.
+            &copy; 2026 Alan Mouawad. Core logic systems secured via compiled architectural patterns. All rights reserved.
         </footer>
     </div>
 
     <script>
-        // مصفوفة البيانات المطورة لتستوعب 4 صور لكل مشروع
-        // يمكنك تسمية الصور في جهازك لتطابق الأسماء المكتوبة هنا بالترتيب
+        // مصفوفة البيانات المطورة والمحمية التي تحتوي على مشاريعك بالكامل مع الـ 4 صور مخصصة
         const _systemRegistry = [
             {
                 status: "Production System (Evolving Since 2023)",
@@ -301,7 +380,7 @@
             }
         ];
 
-        // محرك الحقن البرمجي وبناء السلايدر ديناميكياً لكل كرت
+        // محرك حقن البيانات وبناء واجهات السلايدر التفاعلية
         const _renderEngine = () => {
             const grid = document.getElementById('secure-render-grid');
             let _htmlBuffer = '';
@@ -309,7 +388,6 @@
             _systemRegistry.forEach((project, index) => {
                 let tags = project.stack.map(t => `<span class="tech-tag">${t}</span>`).join('');
                 
-                // بناء الشرائح الأربعة لكل مشروع
                 let slides = project.images.map(img => `
                     <div class="slider-slide">
                         <img src="${img}" alt="${project.title}" class="project-img" loading="lazy">
@@ -317,7 +395,7 @@
                 `).join('');
 
                 _htmlBuffer += `
-                    <div class="project-card">
+                    <div class="project-card" id="card-${index}">
                         <div class="slider-wrapper">
                             <button class="slider-btn prev" onclick="_slideAction(${index}, -1)">&#10094;</button>
                             <div class="image-slider" id="slider-${index}">
@@ -335,17 +413,44 @@
                 `;
             });
             grid.innerHTML = _htmlBuffer;
+            
+            // تشغيل راصد الحركة المتقدم بعد حقن العناصر
+            _initScrollReveal();
         };
 
-        // دالة التمرير البرمجي عند الضغط على الأسهم (يمين / يسار)
+        // دالة التمرير البرمجي الناعم للصور (يمين / يسار)
         const _slideAction = (sliderIndex, direction) => {
             const slider = document.getElementById(`slider-${sliderIndex}`);
             const slideWidth = slider.clientWidth;
-            // التحرك بمقدار عرض الكرت إما لليمين أو لليسار
             slider.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
         };
 
-        // تفعيل النظام
+        // محرك مراقبة التمرير (Intersection Observer) لظهور الكروت بحركة انسيابية متتالية عند النزول لأسفل الصفحة
+        const _initScrollReveal = () => {
+            const cards = document.querySelectorAll('.project-card');
+            
+            const observerOptions = {
+                root: null,
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const cardObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, idx) => {
+                    if (entry.isIntersecting) {
+                        // إضافة تأخير زمني بسيط (Stagger Effect) لكل كرت ليظهروا وراء بعضهم بشكل رائع
+                        setTimeout(() => {
+                            entry.target.classList.add('reveal-active');
+                        }, idx * 150);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            cards.forEach(card => cardObserver.observe(card));
+        };
+
+        // إطلاق المحرك الرئيسي للـ Architecture
         document.addEventListener('DOMContentLoaded', _renderEngine);
     </script>
 </body>
