@@ -1,13 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Alan Mouawad | Systems Architect & Lead Developer</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alan Mouawad | Systems Architect & Lead Developer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app-secure-container"></div>
-<script src="main.js"></script>
+
+    <canvas id="neuron-canvas"></canvas>
+
+    <div class="container">
+        <header>
+            <h1 id="prof-title">Alan Mouawad</h1>
+            <div class="subtitle-container">
+                <div class="subtitle">Systems Architect & Lead Developer</div>
+            </div>
+            <p>Specializing in compiling high-performance desktop architectures, multi-tier enterprise web systems, and secure infrastructure. Focused on code clean-room isolation, pipeline automation, and long-term production systems lifecycles.</p>
+        </header>
+
+        <section>
+            <h2>Core Stack Matrix</h2>
+            <div class="tech-grid">
+                <span class="tech-tag" onclick="_navigateToProject('Rust')">Rust</span>
+                <span class="tech-tag" onclick="_navigateToProject('Tauri framework')">Tauri framework</span>
+                <span class="tech-tag" onclick="_navigateToProject('C# / .NET (ASP.NET Core)')">C# / .NET (ASP.NET Core)</span>
+                <span class="tech-tag" onclick="_navigateToProject('Clean Architecture Pattern')">Clean Architecture Pattern</span>
+                <span class="tech-tag" onclick="_navigateToProject('Entity Framework Core')">Entity Framework Core</span>
+                <span class="tech-tag" onclick="_navigateToProject('Next.js / TypeScript')">Next.js / TypeScript</span>
+                <span class="tech-tag" onclick="_navigateToProject('Docker Isolation')">Docker Isolation</span>
+                <span class="tech-tag" onclick="_navigateToProject('SQLite & SQL Server')">SQLite & SQL Server</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Production Repositories Architecture</h2>
+            <div class="projects-container" id="secure-render-grid">
+            </div>
+        </section>
+
+        <footer class="secure-footer">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="visitor-counter">
+                        <span class="pulse-dot"></span>
+                        SYS_LOAD_VISITS: <span id="count">Loading...</span>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            &copy; 2026 Alan Mouawad. All rights reserved.
+        </footer>
+    </div>
+
+   <script src="main.js"></script>
 </body>
 </html>
