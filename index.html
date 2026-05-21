@@ -58,6 +58,17 @@
             100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
         }
 
+        /* تلميح بصري خاطف للمشروع المستهدف عند الانتقال */
+        @keyframes targetHighlight {
+            0% { border-color: var(--border-color); box-shadow: none; }
+            30% { border-color: var(--accent-blue); box-shadow: 0 0 25px rgba(56, 189, 248, 0.4); }
+            100% { border-color: var(--border-color); box-shadow: none; }
+        }
+
+        .project-card.highlight-target {
+            animation: targetHighlight 1.5s ease-in-out;
+        }
+
         /* Header / Hero Animation */
         header {
             padding-bottom: 40px;
@@ -134,7 +145,7 @@
             color: var(--text-main);
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: default;
+            cursor: pointer; /* تعديل المؤشر ليصبح قابل للضغط */
         }
 
         .tech-tag:hover {
@@ -321,14 +332,14 @@
         <section>
             <h2>Core Stack Matrix</h2>
             <div class="tech-grid">
-                <span class="tech-tag">Rust</span>
-                <span class="tech-tag">Tauri framework</span>
-                <span class="tech-tag">C# / .NET (ASP.NET Core)</span>
-                <span class="tech-tag">Clean Architecture Pattern</span>
-                <span class="tech-tag">Entity Framework Core</span>
-                <span class="tech-tag">Next.js / TypeScript</span>
-                <span class="tech-tag">Docker Isolation</span>
-                <span class="tech-tag">SQLite & SQL Server</span>
+                <span class="tech-tag" onclick="_navigateToProject('Rust')">Rust</span>
+                <span class="tech-tag" onclick="_navigateToProject('Tauri framework')">Tauri framework</span>
+                <span class="tech-tag" onclick="_navigateToProject('C# / .NET (ASP.NET Core)')">C# / .NET (ASP.NET Core)</span>
+                <span class="tech-tag" onclick="_navigateToProject('Clean Architecture Pattern')">Clean Architecture Pattern</span>
+                <span class="tech-tag" onclick="_navigateToProject('Entity Framework Core')">Entity Framework Core</span>
+                <span class="tech-tag" onclick="_navigateToProject('Next.js / TypeScript')">Next.js / TypeScript</span>
+                <span class="tech-tag" onclick="_navigateToProject('Docker Isolation')">Docker Isolation</span>
+                <span class="tech-tag" onclick="_navigateToProject('SQLite & SQL Server')">SQLite & SQL Server</span>
             </div>
         </section>
 
@@ -356,7 +367,8 @@
                     "pcm-3.jpg",
                     "pcm-4.jpg"
                 ],
-                stack: ["ASP.NET Core MVC 5.0", "C#", "EF Core", "SQL Server"]
+                // إضافة الكلمات الدلالية المتوافقة مع الـ Core Stack Matrix للربط الذكي
+                stack: ["ASP.NET Core MVC 5.0", "C#", "EF Core", "SQL Server", "C# / .NET (ASP.NET Core)", "Clean Architecture Pattern", "Entity Framework Core", "SQLite & SQL Server"]
             },
             {
                 status: "High-Performance Desktop Client",
@@ -368,7 +380,7 @@
                     "study-3.jpg",
                     "study-4.jpg"
                 ],
-                stack: [".NET", "C#", "SQLite", "Tauri/Rust Compatible Model"]
+                stack: [".NET", "C#", "SQLite", "Tauri/Rust Compatible Model", "Rust", "Tauri framework", "SQLite & SQL Server", "C# / .NET (ASP.NET Core)"]
             },
             {
                 status: "Full-Stack Application Layer",
@@ -380,7 +392,7 @@
                     "Clinic 3.png",
                     "Clinic 4.png"
                 ],
-                stack: ["Next.js", "Supabase", "TypeScript", "Tailwind Engines"]
+                stack: ["Next.js", "Supabase", "TypeScript", "Tailwind Engines", "Next.js / TypeScript"]
             }
         ];
 
@@ -390,7 +402,7 @@
             let _htmlBuffer = '';
 
             _systemRegistry.forEach((project, index) => {
-                let tags = project.stack.map(t => `<span class="tech-tag">${t}</span>`).join('');
+                let tags = project.stack.map(t => `<span class="tech-tag" onclick="_navigateToProject('${t}')">${t}</span>`).join('');
                 
                 let slides = project.images.map(img => `
                     <div class="slider-slide">
@@ -401,11 +413,11 @@
                 _htmlBuffer += `
                     <div class="project-card" id="card-${index}">
                         <div class="slider-wrapper">
-                            <button class="slider-btn prev" onclick="_slideAction(${index}, -1)">&#10094;</button>
+                            <button class="slider-btn prev" onclick="event.stopPropagation(); _slideAction(${index}, -1)">&#10094;</button>
                             <div class="image-slider" id="slider-${index}">
                                 ${slides}
                             </div>
-                            <button class="slider-btn next" onclick="_slideAction(${index}, 1)">&#10095;</button>
+                            <button class="slider-btn next" onclick="event.stopPropagation(); _slideAction(${index}, 1)">&#10095;</button>
                         </div>
                         <div class="project-content">
                             <div class="project-status">${project.status}</div>
@@ -442,6 +454,27 @@
             // التمرير الطبيعي بين الصور بناءً على حجم السلايدر المتغير
             else {
                 slider.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
+            }
+        };
+
+        // محرك التنقل والربط الذكي المستهدف للمشاريع (Smart Routing Engine)
+        const _navigateToProject = (techName) => {
+            // البحث عن أول مشروع يحتوي على العنصر المستهدف في الـ stack الخاص به
+            const projectIndex = _systemRegistry.findIndex(project => 
+                project.stack.some(tech => tech.toLowerCase() === techName.toLowerCase())
+            );
+
+            if (projectIndex !== -1) {
+                const targetCard = document.getElementById(`card-${projectIndex}`);
+                if (targetCard) {
+                    // الانتقال الانسيابي السلس إلى مكان الكرت في الصفحة
+                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // تفعيل تأثير الوميض البصري الخاطف لتنبيه المستخدم
+                    targetCard.classList.remove('highlight-target');
+                    void targetCard.offsetWidth; // Force Reflow لإعادة تشغيل الـ CSS Animation
+                    targetCard.classList.add('highlight-target');
+                }
             }
         };
 
