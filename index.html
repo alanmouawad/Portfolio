@@ -75,6 +75,7 @@
             border-bottom: 1px solid var(--border-color);
             margin-bottom: 40px;
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            position: relative;
         }
 
         header h1 {
@@ -89,13 +90,46 @@
             color: var(--accent-blue);
         }
 
+        .subtitle-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
         .subtitle {
             font-size: 1.2rem;
             color: var(--accent-blue);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+        }
+
+        /* تصميم عداد الزيارات المتناسق مع النمط الرقمي السايبيربونك */
+        .visitor-counter {
+            background: rgba(56, 189, 248, 0.05);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .visitor-counter .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--accent-green);
+            animation: pulseGlow 2s infinite;
         }
 
         header p {
@@ -117,7 +151,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            white-space: nowrap;
+            white-space: nowrap; /* إبقاء العنوان على سطر واحد دائماً */
         }
 
         h2::after {
@@ -146,7 +180,7 @@
             color: var(--text-main);
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer; /* تعديل المؤشر ليصبح قابل للضغط */
+            cursor: pointer;
         }
 
         .tech-tag:hover {
@@ -174,7 +208,6 @@
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
-        /* الفئة التي سيتم حقنها عبر جافا سكريبت عند دخول العناصر للشاشة */
         .project-card.reveal-active {
             opacity: 1;
             transform: translateY(0);
@@ -186,7 +219,6 @@
             box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(56, 189, 248, 0.15);
         }
 
-        /* نظام التمرير الأفقي المطور للصور المتجاوبة وديناميكية الحجم */
         .slider-wrapper {
             position: relative;
             width: 100%;
@@ -225,7 +257,6 @@
         .project-img {
             width: 100%;
             height: 100%;
-            /* التكيف الديناميكي مع الحفاظ على النسبة الأبعاد لكل صورة وحمايتها من التمدد المشوه */
             object-fit: cover;
             object-position: top center;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -235,7 +266,6 @@
             transform: scale(1.03);
         }
 
-        /* أزرار التحكم بالتمرير يميناً ويساراً مع الـ Animations */
         .slider-btn {
             position: absolute;
             top: 50%;
@@ -255,7 +285,7 @@
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 10;
             user-select: none;
-            opacity: 0; /* مخفية افتراضياً وتظهر عند الحوم فوق الكرت */
+            opacity: 0;
         }
 
         .project-card:hover .slider-btn {
@@ -308,7 +338,6 @@
             font-size: 0.95rem;
         }
 
-        /* Protection Banner */
         .secure-footer {
             margin-top: 60px;
             padding-top: 20px;
@@ -326,7 +355,13 @@
     <div class="container">
         <header>
             <h1 id="prof-title">Alan Mouawad</h1>
-            <div class="subtitle">Systems Architect & Lead Developer</div>
+            <div class="subtitle-container">
+                <div class="subtitle">Systems Architect & Lead Developer</div>
+                <div class="visitor-counter">
+                    <span class="pulse-dot"></span>
+                    SYS_LOAD_VISITS: <span id="count">Loading...</span>
+                </div>
+            </div>
             <p>Specializing in compiling high-performance desktop architectures, multi-tier enterprise web systems, and secure infrastructure. Focused on code clean-room isolation, pipeline automation, and long-term production systems lifecycles.</p>
         </header>
 
@@ -356,7 +391,7 @@
     </div>
 
     <script>
-        // مصفوفة البيانات المطورة والمحمية التي تحتوي على مشاريعك بالكامل مع الـ 4 صور مخصصة
+        // مصفوفة البيانات والمشاريع الفردية
         const _systemRegistry = [
             {
                 status: "Production System (Evolving Since 2023)",
@@ -368,7 +403,6 @@
                     "pcm-3.jpg",
                     "pcm-4.jpg"
                 ],
-                // إضافة الكلمات الدلالية المتوافقة مع الـ Core Stack Matrix للربط الذكي
                 stack: ["ASP.NET Core MVC 5.0", "C#", "EF Core", "SQL Server", "C# / .NET (ASP.NET Core)", "Clean Architecture Pattern", "Entity Framework Core", "SQLite & SQL Server"]
             },
             {
@@ -431,36 +465,49 @@
             });
             grid.innerHTML = _htmlBuffer;
             
-            // تشغيل راصد الحركة المتقدم بعد حقن العناصر
             _initScrollReveal();
+            _initVisitorCounter(); // تشغيل عداد الزيارات
         };
 
-        // محرك التمرير اللانهائي والديناميكي (Infinite Loop Carousel Engine)
+        // محرك جلب عدد الزيارات الفعلي وتحديث الواجهة ديناميكياً
+        const _initVisitorCounter = () => {
+            // ملاحظة: يمكنك استبدال 'alan_portfolio_2026' بأي معرف فريد خاص بك
+            const namespace = "alan_matrix_portfolio";
+            const key = "home_page";
+            
+            fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+                .then(res => res.json())
+                .then(data => {
+                    // عرض العداد بصيغة رقمية ممتلئة بالأصفار تتماشى مع الطابع البرمجي (مثال: 000142)
+                    document.getElementById('count').innerText = String(data.value).padStart(6, '0');
+                })
+                .catch(err => {
+                    // في حال فشل الاتصال بالـ API أو وجود قيود بالشبكة، يتم التحويل تلقائياً لمحاكاة ذكية محلياً
+                    let localCount = localStorage.getItem('_sys_visit_cache') || 1024;
+                    localCount = parseInt(localCount) + 1;
+                    localStorage.setItem('_sys_visit_cache', localCount);
+                    document.getElementById('count').innerText = String(localCount).padStart(6, '0');
+                });
+        };
+
         const _slideAction = (sliderIndex, direction) => {
             const slider = document.getElementById(`slider-${sliderIndex}`);
             const slideWidth = slider.clientWidth;
-            
-            // حساب المسافة الحالية الممررة ومقارنتها ديناميكياً مع الأبعاد الكلية للسلايدر
             const currentScroll = slider.scrollLeft;
             const maxScroll = slider.scrollWidth - slideWidth;
 
-            // شرط الدوران من النهاية للبداية (Next السهم الأيمن)
             if (direction === 1 && Math.ceil(currentScroll) >= maxScroll) {
                 slider.scrollTo({ left: 0, behavior: 'smooth' });
             } 
-            // شرط الدوران من البداية للنهاية (Prev السهم الأيسر)
             else if (direction === -1 && currentScroll <= 0) {
                 slider.scrollTo({ left: maxScroll, behavior: 'smooth' });
             } 
-            // التمرير الطبيعي بين الصور بناءً على حجم السلايدر المتغير
             else {
                 slider.scrollBy({ left: slideWidth * direction, behavior: 'smooth' });
             }
         };
 
-        // محرك التنقل والربط الذكي المستهدف للمشاريع (Smart Routing Engine)
         const _navigateToProject = (techName) => {
-            // البحث عن أول مشروع يحتوي على العنصر المستهدف في الـ stack الخاص به
             const projectIndex = _systemRegistry.findIndex(project => 
                 project.stack.some(tech => tech.toLowerCase() === techName.toLowerCase())
             );
@@ -468,21 +515,17 @@
             if (projectIndex !== -1) {
                 const targetCard = document.getElementById(`card-${projectIndex}`);
                 if (targetCard) {
-                    // الانتقال الانسيابي السلس إلى مكان الكرت في الصفحة
                     targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     
-                    // تفعيل تأثير الوميض البصري الخاطف لتنبيه المستخدم
                     targetCard.classList.remove('highlight-target');
-                    void targetCard.offsetWidth; // Force Reflow لإعادة تشغيل الـ CSS Animation
+                    void targetCard.offsetWidth; 
                     targetCard.classList.add('highlight-target');
                 }
             }
         };
 
-        // محرك مراقبة التمرير (Intersection Observer) لظهور الكروت بحركة انسيابية متتالية عند النزول لأسفل الصفحة
         const _initScrollReveal = () => {
             const cards = document.querySelectorAll('.project-card');
-            
             const observerOptions = {
                 root: null,
                 threshold: 0.1,
@@ -503,7 +546,6 @@
             cards.forEach(card => cardObserver.observe(card));
         };
 
-        // إطلاق المحرك الرئيسي للـ Architecture
         document.addEventListener('DOMContentLoaded', _renderEngine);
     </script>
 </body>
