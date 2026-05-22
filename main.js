@@ -198,4 +198,5 @@ document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.keyCode === 67)) { e.preventDefault(); return false; }
     if (e.ctrlKey && (e.key === 'u' || e.keyCode === 85)) { e.preventDefault(); return false; }
     if (e.ctrlKey && (e.key === 's' || e.keyCode === 83)) { e.preventDefault(); return false; }
+    if (e.ctrlKey && (e.key === 'c' || e.keyCode === 67)) { e.preventDefault(); return false; }
 });
