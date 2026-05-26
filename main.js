@@ -23,18 +23,7 @@ const _systemRegistry = [
                 ],
                 stack: [".NET", "C#", "SQLite", "Tauri/Rust Compatible Model", "Rust", "Tauri framework", "SQLite & SQL Server", "C# / .NET (ASP.NET Core)"]
             },
-            {
-                status: "Full-Stack Application Layer",
-                title: "Dentix",
-                desc: "A modern clinic ecosystem designed for optimized patient tracking, zero-loss operational data mapping, and instant client-side rendering with real-time state persistence algorithms.",
-                images: [
-                    "Clinic1.png",
-                    "Clinic 2.png",
-                    "Clinic 3.png",
-                    "Clinic 4.png"
-                ],
-                stack: ["Next.js", "Supabase", "TypeScript", "Tailwind Engines", "Next.js / TypeScript"]
-            },
+           
             {
                 status: "Fuzzy Information Retrieval System",
                 title: "FIRS",
