@@ -45,7 +45,7 @@ const _systemRegistry = [
                     "Clinic 3.png",
                     "Clinic 4.png"
                 ],
-                stack: ["Next.js", "Supabase", "TypeScript", "Tailwind Engines", "Next.js / TypeScript"]
+                stack: [ "C#", "EF Core", "SQL Server"]
             }
         ];
 
